@@ -1,0 +1,6 @@
+@MueblesAmerica.API_HostAddress = http://localhost:5117
+
+GET {{MueblesAmerica.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

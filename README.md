@@ -15,21 +15,21 @@ El propósito de este prototipo:
 - **API**: Contiene los controladores de la API para interacturar con la aplicación.
 
 ```plaintext
-MueblesNorteAmerica
-├── MueblesNorteAmerica.Application
-│   ├── Services
+MueblesAmerica
+├── MueblesAmerica.Application
 │   └── UseCases
-├── MueblesNorteAmerica.Domain
+├── MueblesAmerica.Domain
 │   ├── Models
 │   └── Ports
-├── MueblesNorteAmerica.Infrastructure
+│       ├── In
+│       └── Out
+├── MueblesAmerica.Infrastructure
 │   ├── Adapters
-│   ├── Config
-│   ├── Controllers
 │   ├── Entities
-│   └── Repositories
-└── MueblesNorteAmerica.API
-    └── Program.cs
+│   └── Factories
+└── MueblesAmerica.API
+    ├── Controllers
+    └── Modules
 ```
 
 ## Tecnologías Utilizadas

@@ -1,0 +1,44 @@
+
+
+--; CREATE DATABASE Muebles_America_Clone;
+USE [Muebles_America_Clone]
+GO
+
+CREATE TABLE Category
+(
+	Id INT IDENTITY(1,1) PRIMARY KEY CLUSTERED,
+	Name VARCHAR(20) NOT NULL,
+	Description VARCHAR(100) 
+)
+GO
+
+CREATE OR ALTER PROCEDURE 
+	Usp_Category_Add
+		@Name VARCHAR(20),
+		@Description VARCHAR(100)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	BEGIN TRY
+		BEGIN TRANSACTION
+			IF EXISTS(SELECT 1 FROM [dbo].[Category] WHERE Name = @Name)
+			BEGIN
+				ROLLBACK TRANSACTION
+			END
+			ELSE BEGIN
+				INSERT INTO [dbo].[Category](Name, Description)
+				VALUES(@Name, @Description)
+
+				COMMIT TRANSACTION
+			END
+	END TRY
+	BEGIN CATCH
+		IF @@TRANCOUNT > 0
+		BEGIN
+			ROLLBACK TRANSACTION
+		END
+	END CATCH
+	SET NOCOUNT OFF;
+END
+GO
